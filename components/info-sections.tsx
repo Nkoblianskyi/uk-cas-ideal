@@ -1,6 +1,6 @@
 "use client"
 
-import { ShieldCheck, Scale, Lock, FileCheck2 } from "lucide-react"
+import { ShieldCheck, Scale, Lock, FileCheck2, MapPin } from "lucide-react"
 
 export function InfoSections() {
   return (
@@ -8,120 +8,146 @@ export function InfoSections() {
       <section
         aria-labelledby="info-heading"
         role="region"
-        className="relative rounded-sm overflow-hidden border-t-2 border-casino-gold"
+        className="relative rounded-sm overflow-hidden border-t-[3px] border-casino-gold shadow-[0_-20px_60px_rgba(1,33,105,0.2),inset_0_1px_0_rgba(212,175,55,0.12)]"
       >
-        <div className="absolute inset-0 bg-[#0a0a0a]" />
+        <div className="absolute inset-0 bg-[#060a12]" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 opacity-[0.07] pointer-events-none"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-b from-[rgb(1,33,105)]/25 via-transparent to-[rgb(200,16,46)]/10"
+        />
 
-        <div className="relative z-10 px-4 md:px-8 py-8 lg:py-10 text-white">
+        <div className="relative z-10 px-4 md:px-8 py-8 lg:py-12 text-white">
           <div className="max-w-3xl mx-auto text-center mb-10">
-            <div className="inline-block text-[10px] md:text-[11px] font-black tracking-[0.22em] text-casino-gold uppercase border-b border-casino-gold/60 pb-1 mb-4">
-              Editorial guide
+            <div
+              aria-hidden="true"
+              className="flex justify-center gap-3 md:gap-5 text-casino-gold/50 text-lg md:text-xl font-serif mb-4 select-none"
+            >
+              <span>♠</span>
+              <span className="text-[rgb(200,16,46)]/70">♥</span>
+              <span>♦</span>
+              <span>♣</span>
             </div>
-            <h2 id="info-heading" className="text-2xl md:text-3xl font-black tracking-tight text-white mb-3">
-              UK land casinos — how we review
+            <div className="inline-flex items-center gap-2 text-[10px] md:text-[11px] font-black tracking-[0.2em] text-casino-gold uppercase border border-casino-gold/35 rounded-sm px-3 py-1.5 mb-4 bg-black/40">
+              <MapPin className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+              From London to Glasgow — on the door
+            </div>
+            <h2 id="info-heading" className="text-2xl md:text-4xl font-black tracking-tight text-white mb-3 leading-[1.1]">
+              <span className="text-casino-gold">Britain&apos;s</span> casino floors,{" "}
+              <span className="text-white">reviewed like a punter</span>
             </h2>
-            <p className="text-[13px] md:text-sm text-gray-300 leading-relaxed">
-              An independent look at operators that run licensed premises in Great Britain. Scores are based on
-              documented criteria — not press releases.
+            <p className="text-[12px] md:text-sm text-gray-400 font-semibold tracking-[0.12em] uppercase mb-3">
+              London · Manchester · Birmingham · Leeds · Glasgow · Cardiff
+            </p>
+            <p className="text-[13px] md:text-sm text-gray-300 leading-relaxed max-w-2xl mx-auto">
+              Chips, carpets, cage queues and how the pit boss runs the room — not generic “operator” copy. We rank{" "}
+              <strong className="text-white">who actually runs a decent British house</strong> under UK Gambling
+              Commission rules: full casino licences, regional casinos, and licensed betting office (LBO) floors where
+              the law allows casino-style machines.
             </p>
           </div>
 
           <ul
-            aria-label="Regulatory snapshot"
-            className="grid grid-cols-2 md:grid-cols-4 gap-px bg-casino-gold/25 border border-casino-gold/25 mb-10 list-none p-0 m-0"
+            aria-label="British gambling regulation at a glance"
+            className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-px md:bg-casino-gold/20 md:border md:border-casino-gold/25 mb-10 list-none p-0 m-0 max-w-4xl mx-auto"
           >
-            <li className="bg-[#0a0a0a] p-4 flex flex-col items-center text-center">
+            <li className="bg-[#0a0f18] border border-casino-gold/20 md:border-0 p-4 flex flex-col items-center text-center">
               <ShieldCheck aria-hidden="true" className="w-6 h-6 text-casino-gold mb-2" strokeWidth={1.75} />
-              <div className="text-[10px] font-black tracking-[0.14em] uppercase text-white">Licence</div>
-              <div className="text-[11px] text-gray-400 mt-1 leading-tight">UK Gambling Commission</div>
+              <div className="text-[10px] font-black tracking-[0.14em] uppercase text-white">UKGC licence</div>
+              <div className="text-[11px] text-gray-400 mt-1 leading-tight">Casino &amp; LBO permissions</div>
             </li>
-            <li className="bg-[#0a0a0a] p-4 flex flex-col items-center text-center">
+            <li className="bg-[#0a0f18] border border-casino-gold/20 md:border-0 p-4 flex flex-col items-center text-center">
               <Scale aria-hidden="true" className="w-6 h-6 text-casino-gold mb-2" strokeWidth={1.75} />
-              <div className="text-[10px] font-black tracking-[0.14em] uppercase text-white">Law</div>
+              <div className="text-[10px] font-black tracking-[0.14em] uppercase text-white">British law</div>
               <div className="text-[11px] text-gray-400 mt-1 leading-tight">Gambling Act 2005</div>
             </li>
-            <li className="bg-[#0a0a0a] p-4 flex flex-col items-center text-center">
+            <li className="bg-[#0a0f18] border border-casino-gold/20 md:border-0 p-4 flex flex-col items-center text-center">
               <Lock aria-hidden="true" className="w-6 h-6 text-casino-gold mb-2" strokeWidth={1.75} />
               <div className="text-[10px] font-black tracking-[0.14em] uppercase text-white">Self-exclusion</div>
-              <div className="text-[11px] text-gray-400 mt-1 leading-tight">Venue schemes &amp; GamStop (remote)</div>
+              <div className="text-[11px] text-gray-400 mt-1 leading-tight">Venue schemes + GamStop (remote)</div>
             </li>
-            <li className="bg-[#0a0a0a] p-4 flex flex-col items-center text-center">
+            <li className="bg-[#0a0f18] border border-casino-gold/20 md:border-0 p-4 flex flex-col items-center text-center">
               <FileCheck2 aria-hidden="true" className="w-6 h-6 text-casino-gold mb-2" strokeWidth={1.75} />
-              <div className="text-[10px] font-black tracking-[0.14em] uppercase text-white">Age</div>
-              <div className="text-[11px] text-gray-400 mt-1 leading-tight">18+ only on premises</div>
+              <div className="text-[10px] font-black tracking-[0.14em] uppercase text-white">Door policy</div>
+              <div className="text-[11px] text-gray-400 mt-1 leading-tight">18+ · ID &amp; membership</div>
             </li>
           </ul>
 
-          <div className="max-w-3xl mx-auto space-y-8">
-            <article>
-              <h3 className="text-[11px] font-black tracking-[0.18em] uppercase text-casino-gold mb-2">01 — Method</h3>
-              <h4 className="text-lg md:text-xl font-bold text-white mb-2">Documented review process</h4>
+          <div className="max-w-3xl mx-auto space-y-7 md:space-y-9">
+            <article className="border-l-2 border-[rgb(200,16,46)]/80 pl-4 md:pl-5 bg-black/20 py-3 pr-2 rounded-r-sm">
+              <h3 className="text-[11px] font-black tracking-[0.18em] uppercase text-casino-gold mb-1">01 — The walk-in</h3>
+              <h4 className="text-lg md:text-xl font-bold text-white mb-2">What we clock on arrival</h4>
               <p className="text-[13px] md:text-sm text-gray-300 leading-relaxed">
-                Each group is checked against the same framework: UKGC licence status, quality of the physical gaming
-                floor, table-game depth, machine estate where relevant, staff training, dispute handling, and how
-                clearly safer gambling help is signposted at the door. Rankings are refreshed quarterly.
+                Security greeting, queue at membership, smell of floor polish versus smoke-stale carpets — it all tells
+                you how a British house respects punters. We score{" "}
+                <strong className="text-white">first impressions on the door</strong>, not website UX mock-ups.
               </p>
             </article>
 
-            <article>
-              <h3 className="text-[11px] font-black tracking-[0.18em] uppercase text-casino-gold mb-2">02 — Regulation</h3>
-              <h4 className="text-lg md:text-xl font-bold text-white mb-2">UKGC and British law</h4>
+            <article className="border-l-2 border-[rgb(1,33,105)] pl-4 md:pl-5 bg-black/20 py-3 pr-2 rounded-r-sm">
+              <h3 className="text-[11px] font-black tracking-[0.18em] uppercase text-casino-gold mb-1">02 — Licence reality</h3>
+              <h4 className="text-lg md:text-xl font-bold text-white mb-2">UKGC isn&apos;t a sticker — it&apos;s the rulebook</h4>
               <p className="text-[13px] md:text-sm text-gray-300 leading-relaxed">
-                Commercial gambling in Great Britain is regulated by the Gambling Commission. Casino operating licences
-                set strict conditions on anti-money laundering, customer interaction, and protecting children and
-                vulnerable people. We only cover groups that hold (or clearly operate under) appropriate GB permissions
-                for land-based activity.
+                We cross-check the public register: operating licence, premises approvals, and conditions around AML and
+                customer interaction. If a group blurs retail betting with casino-style floors, we say so in plain
+                English — <strong className="text-white">British punters deserve straight talk</strong>.
               </p>
             </article>
 
-            <article>
-              <h3 className="text-[11px] font-black tracking-[0.18em] uppercase text-casino-gold mb-2">03 — On the floor</h3>
-              <h4 className="text-lg md:text-xl font-bold text-white mb-2">Games and atmosphere</h4>
+            <article className="border-l-2 border-casino-gold/70 pl-4 md:pl-5 bg-black/20 py-3 pr-2 rounded-r-sm">
+              <h3 className="text-[11px] font-black tracking-[0.18em] uppercase text-casino-gold mb-1">03 — Tables &amp; machines</h3>
+              <h4 className="text-lg md:text-xl font-bold text-white mb-2">Roulette, blackjack, B1/B3 — what&apos;s actually switched on</h4>
               <p className="text-[13px] md:text-sm text-gray-300 leading-relaxed">
-                A strong land venue balances classic tables, modern electronic tables where offered, and a well-run slots
-                floor without overcrowding. We reward consistent housekeeping, professional dealers, and a calm,
-                well-lit environment — not app download counts.
+                Full casinos run American roulette, punto banco, blackjack; many LBOs run category B1/B3 and roulette
+                terminals under strict caps. We care about{" "}
+                <strong className="text-white">spacing, minimums posted honestly</strong>, and whether electronic
+                roulette feels fair or cramped.
               </p>
             </article>
 
-            <article>
-              <h3 className="text-[11px] font-black tracking-[0.18em] uppercase text-casino-gold mb-2">04 — Hospitality</h3>
-              <h4 className="text-lg md:text-xl font-bold text-white mb-2">Membership and service</h4>
+            <article className="border-l-2 border-casino-gold/70 pl-4 md:pl-5 bg-black/20 py-3 pr-2 rounded-r-sm">
+              <h3 className="text-[11px] font-black tracking-[0.18em] uppercase text-casino-gold mb-1">04 — The bar &amp; the cage</h3>
+              <h4 className="text-lg md:text-xl font-bold text-white mb-2">Hospitality without the waffle</h4>
               <p className="text-[13px] md:text-sm text-gray-300 leading-relaxed">
-                Membership rules, dress codes and food &amp; beverage vary by house. We note how fairly front-of-house
-                staff explain limits, ID checks and self-exclusion — clarity matters as much as chandeliers.
+                Dress codes, last rounds, and how the cage handles a chunky chip cash-out — that&apos;s the Britain we
+                review. Chandeliers are optional; <strong className="text-white">straight answers at the desk</strong>{" "}
+                are not.
               </p>
             </article>
 
-            <article>
-              <h3 className="text-[11px] font-black tracking-[0.18em] uppercase text-casino-gold mb-2">05 — Payments</h3>
-              <h4 className="text-lg md:text-xl font-bold text-white mb-2">Cash, chips and payouts</h4>
+            <article className="border-l-2 border-[rgb(200,16,46)]/80 pl-4 md:pl-5 bg-black/20 py-3 pr-2 rounded-r-sm">
+              <h3 className="text-[11px] font-black tracking-[0.18em] uppercase text-casino-gold mb-1">05 — Cash &amp; chips</h3>
+              <h4 className="text-lg md:text-xl font-bold text-white mb-2">Real money, real cage</h4>
               <p className="text-[13px] md:text-sm text-gray-300 leading-relaxed">
-                Land venues still rely on cash, chip redemption and card services at the cage. We ask how quickly
-                legitimate payouts are processed in person, and whether limits are explained before play — not
-                e-wallet marketing speeds.
+                Contactless at the bar doesn&apos;t replace chip redemption. We note payout friction, ID re-checks, and
+                whether staff explain machine limits before you sit —{" "}
+                <strong className="text-white">how a UK house should treat bankrolls</strong>.
               </p>
             </article>
 
-            <article>
-              <h3 className="text-[11px] font-black tracking-[0.18em] uppercase text-casino-gold mb-2">06 — Safer gambling</h3>
-              <h4 className="text-lg md:text-xl font-bold text-white mb-2">Player protection on site</h4>
+            <article className="border-l-2 border-[rgb(1,33,105)] pl-4 md:pl-5 bg-black/20 py-3 pr-2 rounded-r-sm">
+              <h3 className="text-[11px] font-black tracking-[0.18em] uppercase text-casino-gold mb-1">06 — When it&apos;s not fun</h3>
+              <h4 className="text-lg md:text-xl font-bold text-white mb-2">Safer gambling on the floor</h4>
               <p className="text-[13px] md:text-sm text-gray-300 leading-relaxed">
-                Staff must be trained to spot harm, offer time-outs, and signpost BeGambleAware, GamCare and National
-                Gambling Helpline materials. Safer gambling is not a “nice extra” for a licensed house — it is a
-                licence condition.
+                Trained interventions, time-outs, self-exclusion forms and helpline cards by the machines — that&apos;s
+                the UK standard we expect. <strong className="text-white">No “responsible gaming” buzzwords</strong>{" "}
+                without staff who can actually act.
               </p>
             </article>
           </div>
 
-          <div className="mt-10 pt-6 border-t border-casino-gold/40 max-w-3xl mx-auto">
-            <div className="text-[10px] md:text-[11px] text-gray-500 leading-relaxed tracking-wide uppercase text-center">
-              <p className="mb-1">
-                Content is copyright. Information is aimed at adults aged 18+ in Great Britain visiting licensed
-                premises. This site does not offer or promote online casino play.
-              </p>
-              <p>Operators may require membership, proof of address and photographic ID. Regional house rules apply.</p>
-            </div>
+          <div className="mt-10 pt-6 border-t border-casino-gold/35 max-w-3xl mx-auto">
+            <p className="text-[10px] md:text-[11px] text-gray-500 leading-relaxed tracking-wide uppercase text-center">
+              Editorial content © Great Britain audience only. We do not publish online casino bonuses or remote
+              sign-up funnels — walk-in gambling on licensed premises only. Membership, photo ID and regional house rules
+              always apply.
+            </p>
           </div>
         </div>
       </section>

@@ -1,72 +1,50 @@
 import Link from "next/link"
 import Image from "next/image"
+import { BrandWordmark } from "./brand-wordmark"
 
 export function Header() {
   return (
     <header
       role="banner"
-      className="relative text-white bg-[#0a0a0a]/85 backdrop-blur-sm border-b border-casino-gold/30"
+      className="relative text-white bg-gradient-to-b from-[#070f1c] via-[#0a0a0a] to-[#050a14] backdrop-blur-sm border-b border-casino-gold/50 shadow-[0_8px_32px_rgba(1,33,105,0.25)]"
     >
       <div
         aria-hidden="true"
-        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-casino-gold/50 to-transparent"
+        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-casino-gold/70 to-transparent"
       />
-
-      <div className="md:hidden h-[42px] flex items-center justify-center px-3">
+      <div className="md:hidden min-h-[48px] flex items-center justify-center px-2 py-1.5">
         <Link
           href="/"
           aria-label="Best UK Land Casinos — home"
-          title="Best UK Land Casinos"
-          className="flex items-center gap-2 group"
+          className="flex items-center gap-2.5 group max-w-[100vw]"
         >
           <Image
             src="/logo.png"
-            alt="Best UK Land Casinos logo"
-            width={22}
-            height={22}
-            className="w-5 h-5 flex-shrink-0"
+            alt=""
+            width={24}
+            height={24}
+            className="w-6 h-6 flex-shrink-0 rounded-sm ring-1 ring-casino-gold/40 shadow-[0_0_12px_rgba(212,175,55,0.2)]"
             priority
           />
-
-          <span className="font-black tracking-[0.06em] uppercase text-[13px] leading-none whitespace-nowrap">
-            <span className="text-white">Best UK Land Casinos</span>
-          </span>
+          <BrandWordmark variant="header-mobile" />
         </Link>
       </div>
 
-      <div className="hidden md:flex container mx-auto px-2 sm:px-4 items-center justify-center min-h-[72px] lg:min-h-[84px] py-2">
+      <div className="hidden md:flex container mx-auto px-2 sm:px-4 items-center justify-center min-h-[72px] lg:min-h-[80px] py-2">
         <Link
           href="/"
           aria-label="Best UK Land Casinos — home"
-          title="Best UK Land Casinos"
-          className="flex items-center gap-3 lg:gap-4 group"
+          className="flex items-center gap-3 lg:gap-5 group rounded-sm px-1 py-0.5 -mx-1 transition-shadow hover:shadow-[0_0_24px_rgba(1,33,105,0.35)]"
         >
           <Image
             src="/logo.png"
-            alt="Best UK Land Casinos logo"
+            alt=""
             width={56}
             height={56}
-            className="w-9 h-9 md:w-10 md:h-10 lg:w-12 lg:h-12 flex-shrink-0 drop-shadow-[0_2px_8px_rgba(212,175,55,0.35)]"
+            className="w-10 h-10 md:w-11 md:h-11 lg:w-[52px] lg:h-[52px] flex-shrink-0 rounded-sm ring-2 ring-casino-gold/35 shadow-[0_4px_20px_rgba(0,0,0,0.45)]"
             priority
           />
-
-          <div className="flex flex-col items-start leading-none">
-            <div className="flex items-center gap-2 lg:gap-2.5">
-              <span aria-hidden="true" className="hidden lg:inline-block w-px h-5 bg-casino-gold/50" />
-
-              <span className="font-black tracking-[0.08em] uppercase text-[20px] md:text-[22px] lg:text-[30px] leading-none whitespace-nowrap">
-                <span className="text-white">Best UK Land Casinos</span>
-              </span>
-            </div>
-
-            <div className="mt-1.5 flex items-center gap-1.5">
-              <span aria-hidden="true" className="h-px w-4 lg:w-5 bg-casino-gold/70" />
-              <span className="text-[9px] lg:text-[10px] font-black tracking-[0.3em] uppercase text-casino-gold/90 whitespace-nowrap">
-                Land-based venues · GB
-              </span>
-              <span aria-hidden="true" className="h-px w-4 lg:w-5 bg-casino-gold/70" />
-            </div>
-          </div>
+          <BrandWordmark variant="header-desktop" />
         </Link>
       </div>
     </header>

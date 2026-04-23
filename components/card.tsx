@@ -26,11 +26,10 @@ export function Card({ site, rank }: SiteCardProps) {
   const isEvenRank = rank % 2 === 0
   const cardBgColor = isEvenRank ? "bg-gray-50" : "bg-white"
 
-  // Scandinavian-premium card styling: subtle shadows, sharp radii,
-  // gold top accent on the featured (#1) card instead of a heavy border.
+  // #1 card: stronger gold frame + warm glow (stands out from the list).
   const rankBorderClass =
     rank === 1
-      ? "rounded-sm border-2 border-casino-gold shadow-[0_0_0_1px_rgba(212,175,55,0.35),0_8px_22px_rgba(212,175,55,0.25),0_2px_6px_rgba(0,0,0,0.08)]"
+      ? "rounded-sm border-[3px] border-casino-gold shadow-[0_0_0_2px_rgba(212,175,55,0.55),0_0_28px_rgba(212,175,55,0.45),0_10px_32px_rgba(212,175,55,0.28),0_4px_12px_rgba(0,0,0,0.1)]"
       : "rounded-sm border border-gray-200 shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
 
   useEffect(() => {
@@ -104,7 +103,7 @@ export function Card({ site, rank }: SiteCardProps) {
     <div className="block">
       {/* Table Header - тільки для першого елемента на desktop/tablet */}
       {rank === 1 && (
-        <div className="hidden md:block bg-[#0a0a0a] text-white rounded-sm overflow-hidden mb-2 border-b-2 border-casino-gold">
+        <div className="hidden md:block bg-[#0a0a0a] text-white rounded-sm overflow-hidden mb-2 border-b-[3px] border-casino-gold shadow-[0_4px_16px_rgba(212,175,55,0.2)]">
           <div className="h-[40px] flex items-center px-6">
             <div className="flex-[0_0_30%] text-center pr-2">
               <span className="text-[11px] font-black tracking-[0.1em] uppercase">Operator</span>
@@ -133,14 +132,14 @@ export function Card({ site, rank }: SiteCardProps) {
       <div
         role="article"
         aria-label={`${site.name} — land venue review, rank #${rank}`}
-        className={`hidden lg:block ${cardBgColor} ${rankBorderClass} transition-all duration-200 hover:shadow-[0_10px_24px_rgba(0,0,0,0.10)] hover:-translate-y-px relative overflow-hidden cursor-pointer`}
+        className={`hidden lg:block w-full min-w-0 ${cardBgColor} ${rankBorderClass} transition-all duration-200 hover:shadow-[0_10px_24px_rgba(0,0,0,0.10)] hover:-translate-y-px relative overflow-hidden cursor-pointer`}
       >
         <Link
           href={`/go/${site.slug}`}
           target="_blank"
           rel="nofollow noopener sponsored noreferrer"
           aria-label={`Visit ${site.name} official site (opens in new tab, sponsored)`}
-          className="block"
+          className="block w-full min-w-0"
         >
           {/* Rank Number Badge - flat black with gold number, premium Scandinavian feel */}
           <div className="absolute top-0 left-0 bg-[#0a0a0a] text-casino-gold px-3 py-1 rounded-tl-sm text-sm font-black tracking-tight z-10 border-b border-casino-gold/60">
@@ -154,30 +153,30 @@ export function Card({ site, rank }: SiteCardProps) {
             </div>
           )}
 
-          {/* Main Content */}
-          <div className="h-[130px] flex items-center px-6">
+          {/* Main Content — fixed % columns, min-w-0 stops wide logos / text from blowing layout */}
+          <div className="h-[130px] flex items-center px-6 w-full min-w-0">
             {/* BOOKMAKER - 30% */}
-            <div className="flex-[0_0_30%] flex justify-center items-center h-full pr-2">
+            <div className="flex-[0_0_30%] min-w-0 flex justify-center items-center h-full pr-2 shrink-0">
               <img
                 src={site.logo || "/placeholder.svg"}
                 alt={site.name}
-                className="w-[170px] xl:w-[200px] h-[85px] xl:h-[100px] object-contain mt-4"
+                className="max-w-full w-[170px] xl:w-[200px] h-[85px] xl:h-[100px] object-contain mt-4"
               />
             </div>
 
             {/* BONUS OFFER - 25% */}
-            <div className="flex-[0_0_25%] text-center flex flex-col justify-center h-full px-2">
+            <div className="flex-[0_0_25%] min-w-0 text-center flex flex-col justify-center h-full px-2 shrink-0">
               <div className="text-xs text-gray-600 uppercase font-normal mb-1">Venue offer</div>
               <div className="text-lg xl:text-xl font-bold text-gray-900 mb-0.5 leading-tight break-words">
                 {site.bonus}
               </div>
-              <div className="text-lg xl:text-xl font-bold text-gray-900 leading-tight break-words text-nowrap">
+              <div className="text-lg xl:text-xl font-bold text-gray-900 leading-tight break-words hyphens-auto">
                 {site.welcomeOffer}
               </div>
             </div>
 
             {/* USER RATING - 20% */}
-            <div className="flex-[0_0_20%] text-center flex flex-col justify-center h-full px-2">
+            <div className="flex-[0_0_20%] min-w-0 text-center flex flex-col justify-center h-full px-2 shrink-0">
               <div className="text-xs text-black mb-0.5">Rate this ({formatVotes(site.votes)})</div>
               <div className="flex justify-center gap-0.5 xl:gap-1">
                 {[...Array(5)].map((_, i) => (
@@ -192,7 +191,7 @@ export function Card({ site, rank }: SiteCardProps) {
             </div>
 
             {/* SCORE - 12% */}
-            <div className="flex-[0_0_12%] text-center flex flex-col justify-center h-full px-1">
+            <div className="flex-[0_0_12%] min-w-0 text-center flex flex-col justify-center h-full px-1 shrink-0">
               <div
                 className="text-[44px] xl:text-[56px] font-bold leading-none"
                 style={{
@@ -204,7 +203,7 @@ export function Card({ site, rank }: SiteCardProps) {
             </div>
 
             {/* VISIT SITE - 13% */}
-            <div className="flex-[0_0_13%] text-center flex flex-col justify-center items-center h-full pl-1">
+            <div className="flex-[0_0_13%] min-w-0 text-center flex flex-col justify-center items-center h-full pl-1 shrink-0">
               <Button className="bg-green-primary hover:bg-green-hover text-white font-black tracking-[0.06em] uppercase px-1 xl:px-2 py-2 rounded-sm text-xs xl:text-sm w-full max-w-[120px] h-[38px] xl:h-[45px] mb-1 transition-colors border-b-2 border-casino-gold shadow-[0_2px_8px_rgba(1,33,105,0.45)]">
                 OFFICIAL SITE
               </Button>
@@ -238,14 +237,14 @@ export function Card({ site, rank }: SiteCardProps) {
       <div
         role="article"
         aria-label={`${site.name} — land venue review, rank #${rank}`}
-        className={`hidden md:block lg:hidden ${cardBgColor} ${rankBorderClass} transition-all duration-200 hover:shadow-[0_10px_24px_rgba(0,0,0,0.10)] hover:-translate-y-px relative overflow-hidden cursor-pointer`}
+        className={`hidden md:block lg:hidden w-full min-w-0 ${cardBgColor} ${rankBorderClass} transition-all duration-200 hover:shadow-[0_10px_24px_rgba(0,0,0,0.10)] hover:-translate-y-px relative overflow-hidden cursor-pointer`}
       >
         <Link
           href={`/go/${site.slug}`}
           target="_blank"
           rel="nofollow noopener sponsored noreferrer"
           aria-label={`Visit ${site.name} official site (opens in new tab, sponsored)`}
-          className="block"
+          className="block w-full min-w-0"
         >
           {/* Rank Number Badge */}
           <div className="absolute top-0 left-0 bg-[#0a0a0a] text-casino-gold px-2 py-1 rounded-tl-sm text-xs font-black z-10 border-b border-casino-gold/60">
@@ -259,29 +258,29 @@ export function Card({ site, rank }: SiteCardProps) {
             </div>
           )}
 
-          <div className="p-4 pt-6 min-h-[140px]">
+          <div className="p-4 pt-6 min-h-[140px] w-full min-w-0">
             {/* FLEXBOX Layout for Tablet */}
-            <div className="flex items-center mb-3">
+            <div className="flex items-center mb-3 w-full min-w-0">
               {/* Logo - 30% */}
-              <div className="flex-[0_0_30%] flex justify-center items-center h-full pr-2">
+              <div className="flex-[0_0_30%] min-w-0 flex justify-center items-center h-full pr-2 shrink-0">
                 <img
                   src={site.logo || "/placeholder.svg"}
                   alt={site.name}
-                  className="w-[140px] h-[70px] object-contain flex-shrink-0"
+                  className="max-w-full w-[140px] h-[70px] object-contain"
                 />
               </div>
 
               {/* Bonus - 25% */}
-              <div className="flex-[0_0_25%] text-center px-2">
+              <div className="flex-[0_0_25%] min-w-0 text-center px-2 shrink-0">
                 <div className="text-xs text-gray-600 uppercase font-normal mb-1">Venue offer</div>
                 <div className="text-base font-bold text-gray-900 mb-0.5 leading-tight break-words">{site.bonus}</div>
-                <div className="text-base font-bold text-gray-900 leading-tight break-words text-nowrap">
+                <div className="text-base font-bold text-gray-900 leading-tight break-words hyphens-auto">
                   {site.welcomeOffer}
                 </div>
               </div>
 
               {/* Rating - 20% */}
-              <div className="flex-[0_0_20%] text-center px-2">
+              <div className="flex-[0_0_20%] min-w-0 text-center px-2 shrink-0">
                 <div className="text-xs text-gray-600 mb-0.5">({formatVotes(site.votes)})</div>
                 <div className="flex justify-center gap-0.5">
                   {[...Array(5)].map((_, i) => (
@@ -298,7 +297,7 @@ export function Card({ site, rank }: SiteCardProps) {
               </div>
 
               {/* Score - 12% */}
-              <div className="flex-[0_0_12%] text-center px-1">
+              <div className="flex-[0_0_12%] min-w-0 text-center px-1 shrink-0">
                 <div
                   className="text-[40px] font-bold leading-none"
                   style={{
@@ -310,7 +309,7 @@ export function Card({ site, rank }: SiteCardProps) {
               </div>
 
               {/* Button - 13% */}
-              <div className="flex-[0_0_13%] text-center pl-1">
+              <div className="flex-[0_0_13%] min-w-0 text-center pl-1 shrink-0">
                 <Button className="bg-green-primary hover:bg-green-hover text-white font-black tracking-[0.06em] uppercase px-2 py-2 rounded-sm text-xs w-full max-w-[100px] mx-auto transition-colors border-b-2 border-casino-gold shadow-[0_2px_8px_rgba(1,33,105,0.45)]">
                   OFFICIAL SITE
                 </Button>
@@ -344,14 +343,14 @@ export function Card({ site, rank }: SiteCardProps) {
       <div
         role="article"
         aria-label={`${site.name} — land venue review, rank #${rank}`}
-        className={`md:hidden ${cardBgColor} ${rankBorderClass} transition-all duration-200 hover:shadow-[0_8px_18px_rgba(0,0,0,0.10)] relative overflow-hidden cursor-pointer`}
+        className={`md:hidden w-full min-w-0 ${cardBgColor} ${rankBorderClass} transition-all duration-200 hover:shadow-[0_8px_18px_rgba(0,0,0,0.10)] relative overflow-hidden cursor-pointer`}
       >
         <Link
           href={`/go/${site.slug}`}
           target="_blank"
           rel="nofollow noopener sponsored noreferrer"
           aria-label={`Visit ${site.name} official site (opens in new tab, sponsored)`}
-          className="block"
+          className="block w-full min-w-0"
         >
           {/* Rank Number Badge */}
           <div className="absolute top-0 left-0 bg-[#0a0a0a] text-casino-gold px-2 py-0.5 rounded-tl-sm text-[10px] font-black z-20 border-b border-casino-gold/60">
@@ -365,19 +364,23 @@ export function Card({ site, rank }: SiteCardProps) {
             </div>
           )}
 
-          {/* Main Content Container */}
-          <div className="grid grid-cols-[1fr_1fr] h-[175px]">
+          {/* Main Content — equal 50/50 columns; minmax(0,1fr) + min-w-0 prevents logo/text widening one side */}
+          <div className="grid h-[175px] w-full min-w-0 [grid-template-columns:minmax(0,1fr)_minmax(0,1fr)] box-border">
             {/* Left Column: Gray background with logo and rating */}
-            <div className="bg-[rgb(242,242,242)] flex flex-col justify-between items-center py-2 px-2">
+            <div className="min-w-0 bg-[rgb(242,242,242)] flex flex-col justify-between items-center py-2 px-2 border-r border-gray-300/90">
               {/* Logo */}
-              <div className="flex-1 flex items-center justify-center">
-                <img src={site.logo || "/placeholder.svg"} alt={site.name} className="h-16 w-auto object-contain" />
+              <div className="flex-1 flex items-center justify-center w-full min-h-0 min-w-0 px-0.5">
+                <img
+                  src={site.logo || "/placeholder.svg"}
+                  alt={site.name}
+                  className="max-h-16 max-w-full w-full h-auto object-contain object-center"
+                />
               </div>
 
               {/* Bottom section with stars and rating */}
-              <div className="grid grid-cols-2 gap-1 w-full">
+              <div className="grid w-full min-w-0 [grid-template-columns:minmax(0,1fr)_minmax(0,1fr)] gap-1">
                 {/* Left column: Stars and Rate it */}
-                <div className="flex flex-col items-center justify-center">
+                <div className="min-w-0 flex flex-col items-center justify-center">
                   {/* Stars */}
                   <div className="flex gap-0.5 mb-1">
                     {[...Array(5)].map((_, i) => (
@@ -398,7 +401,7 @@ export function Card({ site, rank }: SiteCardProps) {
                 </div>
 
                 {/* Right column: Score */}
-                <div className="flex flex-col items-center justify-center">
+                <div className="min-w-0 flex flex-col items-center justify-center">
                   <div className="text-3xl font-bold leading-none" style={{ color: "rgb(200, 16, 46)" }}>
                     {site.rating.toFixed(1)}
                   </div>
@@ -408,12 +411,16 @@ export function Card({ site, rank }: SiteCardProps) {
             </div>
 
             {/* Right Column: Bonus and Button */}
-            <div className="flex flex-col justify-between py-2 px-2">
+            <div className="min-w-0 flex flex-col justify-between py-2 px-2 bg-white">
               {/* Welcome Bonus */}
-              <div className="text-center flex-1 flex flex-col justify-center">
+              <div className="text-center flex-1 flex flex-col justify-center min-w-0">
                 <div className="text-[10px] text-black uppercase font-normal mb-1">Venue offer</div>
-                <div className="text-lg font-bold text-gray-900 leading-tight mb-1">{site.bonus}</div>
-                <div className="text-lg font-bold text-gray-900 leading-tight text-nowrap">{site.welcomeOffer}</div>
+                <div className="text-base font-bold text-gray-900 leading-snug mb-1 break-words hyphens-auto">
+                  {site.bonus}
+                </div>
+                <div className="text-base font-bold text-gray-900 leading-snug break-words hyphens-auto">
+                  {site.welcomeOffer}
+                </div>
               </div>
 
               {/* Button - more square */}

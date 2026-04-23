@@ -2,38 +2,63 @@ import Link from "next/link"
 import Image from "next/image"
 import { BrandWordmark } from "./brand-wordmark"
 
-type FooterPartner =
-  | { href: string; label: string; alt: string; kind: "image"; src: string }
-  | { href: string; label: string; alt: string; kind: "text"; title: string }
+const helpline = "0808 8020 133"
 
-const partners: FooterPartner[] = [
+const partnerLogos: {
+  href: string
+  label: string
+  src: string
+  alt: string
+  width: number
+  height: number
+}[] = [
   {
-    href: "https://www.gamblingcommission.gov.uk",
-    label: "UK Gambling Commission",
-    alt: "UK Gambling Commission",
-    kind: "text",
-    title: "UKGC",
-  },
-  {
-    href: "https://www.gamstop.co.uk",
-    label: "GamStop self-exclusion",
-    alt: "GamStop",
-    kind: "text",
-    title: "GamStop",
-  },
-  {
-    href: "https://www.begambleaware.org",
+    href: "https://www.gambleaware.org/",
     label: "BeGambleAware",
-    alt: "BeGambleAware",
-    kind: "image",
     src: "/gamble.webp",
+    alt: "GambleAware",
+    width: 120,
+    height: 32,
   },
   {
-    href: "https://www.gamcare.org.uk",
+    href: "https://www.gamcare.org.uk/",
     label: "GamCare",
-    alt: "GamCare",
-    kind: "image",
     src: "/gamecare.svg",
+    alt: "GamCare",
+    width: 120,
+    height: 32,
+  },
+  {
+    href: "https://www.gordonmoody.org.uk/",
+    label: "Gordon Moody",
+    src: "/gordon.png",
+    alt: "Gordon Moody",
+    width: 120,
+    height: 32,
+  },
+  {
+    href: "https://www.gamblersanonymous.org.uk/",
+    label: "Gamblers Anonymous",
+    src: "/anonymos.avif",
+    alt: "Gamblers Anonymous",
+    width: 120,
+    height: 32,
+  },
+  {
+    href: "https://www.gamstop.co.uk/",
+    label: "GamStop",
+    src: "/gamstop.svg",
+    alt: "GamStop",
+    width: 120,
+    height: 32,
+  },
+  {
+    href: "https://www.egba.eu/",
+    label: "European Gaming and Betting Association",
+    src: "/egba.png",
+    alt: "EGBA",
+    width: 120,
+    height: 32,
   },
 ]
 
@@ -67,9 +92,10 @@ export function Footer() {
             </Link>
 
             <p className="mt-6 text-[13px] text-gray-400 leading-relaxed max-w-md mx-auto sm:mx-0 border-l-2 border-casino-gold/40 pl-4 sm:pl-5">
-              We write for people walking through <span className="text-casino-gold/95 font-semibold">casino doors in England, Scotland and Wales</span> — from
-              members&apos; clubs and regional casinos to high-street LBOs with proper machine entitlement. No remote
-              roulette apps, no offshore sign-up pages: just what matters on the British gaming floor.
+              We write for people walking through{" "}
+              <span className="text-casino-gold/95 font-semibold">casino doors in England, Scotland and Wales</span> —
+              from members&apos; clubs and regional casinos to high-street LBOs with proper machine entitlement. No
+              remote roulette apps, no offshore sign-up pages: just what matters on the British gaming floor.
             </p>
 
             <div className="mt-5 flex flex-wrap items-center justify-center sm:justify-start gap-2">
@@ -134,46 +160,49 @@ export function Footer() {
             id="rg-partners-heading"
             className="text-[10px] font-black tracking-[0.22em] uppercase text-casino-gold mb-2 pb-1 border-b border-casino-gold/30 inline-block text-center"
           >
-            When the fun stops — UK help
+            When the fun stops — help &amp; organisations
           </h3>
-          <p className="text-[11px] text-gray-500 text-center max-w-lg mb-4">
-            National Gambling Helpline <span className="text-gray-300 font-semibold">0808 8020 133</span> (free, 24/7,
-            GB).
+          <p className="text-[11px] text-gray-500 text-center max-w-lg mb-5">
+            National Gambling Helpline{" "}
+            <a href={`tel:${helpline.replace(/\s/g, "")}`} className="text-gray-300 font-semibold hover:text-casino-gold">
+              {helpline}
+            </a>{" "}
+            (free, 24/7, GB).
           </p>
 
           <div
             role="list"
-            aria-label="Responsible gambling organisations"
-            className="grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-3 max-w-4xl w-full"
+            aria-label="Responsible gambling and industry organisations"
+            className="flex flex-wrap justify-center items-center gap-4 sm:gap-5 md:gap-6 max-w-5xl w-full"
           >
-            {partners.map((p) => (
+            <a
+              href="https://www.gamblingcommission.gov.uk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              role="listitem"
+              aria-label="UK Gambling Commission"
+              className="inline-flex h-10 shrink-0 items-center justify-center rounded border border-casino-gold/40 bg-black/70 px-3 text-[10px] font-black uppercase tracking-wider text-casino-gold opacity-90 transition-opacity hover:opacity-100"
+            >
+              UKGC
+            </a>
+
+            {partnerLogos.map((p) => (
               <a
-                key={p.alt}
+                key={p.href}
                 href={p.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 role="listitem"
                 aria-label={p.label}
-                title={p.alt}
-                className={
-                  p.kind === "image"
-                    ? "bg-white hover:bg-stone-100 rounded-sm h-10 md:h-11 flex items-center justify-center px-2 py-1 transition-colors ring-1 ring-black/5"
-                    : "bg-black/80 border border-casino-gold/35 hover:border-casino-gold/70 rounded-sm h-10 md:h-11 flex items-center justify-center px-2 py-1 transition-colors"
-                }
+                className="inline-flex h-10 shrink-0 items-center justify-center rounded bg-white px-2 py-1 opacity-90 ring-1 ring-black/10 transition-opacity hover:opacity-100"
               >
-                {p.kind === "image" ? (
-                  <Image
-                    src={p.src}
-                    alt={p.alt}
-                    width={100}
-                    height={32}
-                    className="max-h-7 md:max-h-8 w-auto object-contain"
-                  />
-                ) : (
-                  <span className="text-[10px] md:text-[11px] font-black tracking-[0.12em] uppercase text-casino-gold text-center leading-tight">
-                    {p.title}
-                  </span>
-                )}
+                <Image
+                  src={p.src}
+                  alt={p.alt}
+                  width={p.width}
+                  height={p.height}
+                  className="h-8 w-auto max-w-[140px] object-contain object-center"
+                />
               </a>
             ))}
           </div>

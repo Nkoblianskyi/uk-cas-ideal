@@ -72,7 +72,7 @@ export function HeroSection({ onAdvertiserModalOpen, onTermsModalOpen }: HeroSec
                 <span className="text-[8px] lg:text-[9px] font-bold tracking-wide">UKGC regime</span>
               </div>
               <div className={trustPill}>
-                <Image src="/flag.png" alt="" width={20} height={20} className="w-3 h-3 rounded-[1px]" />
+                <Image src="/flag.png" alt="" width={20} height={20} className=" rounded-[1px]" />
                 <span className="text-[8px] lg:text-[9px] font-bold tracking-wide">Great Britain</span>
               </div>
               <div className={trustPill}>
@@ -162,31 +162,27 @@ export function HeroSection({ onAdvertiserModalOpen, onTermsModalOpen }: HeroSec
 
         <div className="relative z-10 px-2 py-2 text-center flex flex-col gap-1">
           <p className="text-[7px] font-bold tracking-[0.16em] uppercase text-sky-100/80">GB licensed · in-venue</p>
-          <h1 className="text-[0.9rem] font-black text-white drop-shadow-sm leading-tight">
+          <h1 className="text-[1.2rem] font-black text-white drop-shadow-sm leading-tight">
             TOP <span className="text-uk-red">UK</span> <span className="text-white/95">LAND CASINOS</span>
           </h1>
-          <h2 className="text-[9px] font-semibold text-sky-100/90 tracking-wide uppercase">Reviewed · {getCurrentMonthYear()}</h2>
+          <h2 className="text-[11px] font-semibold text-sky-100/90 tracking-wide uppercase">Reviewed · {getCurrentMonthYear()}</h2>
 
           <div className="flex justify-center gap-1 flex-wrap">
             <div className={`${trustPill} py-0.5 px-1.5`}>
-              <Shield className="w-2.5 h-2.5 text-white" />
-              <span className="text-[6px] font-bold">UKGC</span>
+              <Shield className="w-4 4 text-white" />
+              <span className="text-[10px] font-bold">UKGC</span>
             </div>
             <div className={`${trustPill} py-0.5 px-1.5`}>
-              <div className="flex gap-px h-2.5" aria-hidden>
-                <span className="w-0.5 bg-green-primary rounded-[1px]" />
-                <span className="w-0.5 bg-white rounded-[1px]" />
-                <span className="w-0.5 bg-[rgb(200,16,46)] rounded-[1px]" />
-              </div>
-              <span className="text-[6px] font-bold">GB</span>
+                <Image src="/flag.png" alt="" width={20} height={20} className="" />
+              <span className="text-[10px] font-bold">GB</span>
             </div>
             <div className={`${trustPill} py-0.5 px-1.5`}>
-              <Clock className="w-2.5 h-2.5 text-white" />
-              <span className="text-[6px] font-bold">Floors</span>
+              <Clock className="w-4 h-4 text-white" />
+              <span className="text-[10px] font-bold">Floors</span>
             </div>
           </div>
 
-          <div className="text-[6px] leading-tight text-sky-200/70">
+          <div className="text-[8px] leading-tight text-sky-200/70">
             <span>18+ · premises. Not online.</span>
             <button type="button" onClick={onAdvertiserModalOpen} className="underline ml-0.5 hover:text-white">
               Disclosure
